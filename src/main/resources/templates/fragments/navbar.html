@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Navbar Start -->
+<nav th:fragment="navbar" class="navbar bg-secondary navbar-dark sticky-top px-lg-5">
+    <a th:href="@{/}" class="navbar-brand ms-4 ms-lg-0">
+        <h1 class="mb-0 text-primary text-uppercase"><i class="fa fa-cut me-3"></i>HairCut</h1>
+    </a>
+    <a th:href="@{/book/service}" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Book Online
+        <i class="fa fa-arrow-right ms-3"></i></a>
+</nav>
+<!-- Navbar End -->
+</body>
+</html>

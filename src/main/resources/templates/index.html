@@ -1,0 +1,9 @@
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/layout}">
+
+<main layout:fragment="content">
+    <div th:replace="fragments/carousel :: carousel"></div>
+    <div th:replace="fragments/working_hours :: workingHours"></div>
+</main>
+</html>

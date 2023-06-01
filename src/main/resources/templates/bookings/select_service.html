@@ -1,0 +1,24 @@
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/layout}">
+
+<main layout:fragment="content">
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-5">Select Service</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col" th:each="service : ${services}">
+                    <a th:href="@{/book/employee(serviceId=${service.id})}">
+                        <div class="card bg-secondary h-100">
+                            <div class="card-body ps-4">
+                                <h3 class="text-uppercase mb-3" th:text="${service.name}"></h3>
+                                <p class="text-uppercase text-primary" th:text="'$' + ${service.price}"></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</html>

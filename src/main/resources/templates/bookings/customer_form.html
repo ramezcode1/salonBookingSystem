@@ -1,0 +1,41 @@
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/layout}">
+
+<main layout:fragment="content">
+    <div class="container py-5">
+        <h2 class="d-inline" th:text="${service.name}"></h2>
+        <h4 class="d-inline" th:text="' (with ' + ${barber.name}  + ')'"></h4>
+        <h3 th:text="${dateString} + ' at ' + ${timeString}"></h3>
+        <form method="post" th:object="${bookingView}" th:action="@{/book/save}" class="col-lg-6 row g-3 mt-2">
+            <div class="col-12">
+                <input type="text" class="form-control" placeholder="Full Name" th:field="*{customerName}">
+                <div class="d-block" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"
+                     th:errorclass="invalid-feedback"></div>
+            </div>
+            <div class="col-12">
+                <input type="email" class="form-control" placeholder="Email" th:field="*{customerEmail}">
+                <div class="d-block" th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"
+                     th:errorclass="invalid-feedback"></div>
+            </div>
+            <div class="col-12">
+                <input type="text" class="form-control" placeholder="Phone Number" th:field="*{customerPhoneNumber}">
+                <div class="d-block" th:if="${#fields.hasErrors('customerPhoneNumber')}" th:errors="*{customerPhoneNumber}"
+                     th:errorclass="invalid-feedback"></div>
+            </div>
+            <div class="col-12">
+                <textarea class="form-control" rows="3" placeholder="Comments (optional)"
+                          th:field="*{comments}"></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary me-5">Book it</button>
+                <a th:href="@{/}">Cancel</a>
+            </div>
+            <input type="hidden" id="bookingDate" name="bookingDate" th:value="${dateString}">
+            <input type="hidden" id="startTime" name="startTime" th:value="${timeString}">
+            <input type="hidden" id="serviceId" name="serviceId" th:value="${service.id}">
+            <input type="hidden" id="barberId" name="barberId" th:value="${barber.id}">
+        </form>
+    </div>
+</main>
+</html>
